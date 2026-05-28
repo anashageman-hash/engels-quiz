@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dark Web Quiz</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(to right,#0f172a,#020617);
+color:white;
+text-align:center;
+margin:0;
+}
+
+.container{
+margin-top:80px;
+}
+
+h1{
+color:#38bdf8;
+text-shadow:0 0 10px cyan;
+}
+
+.card{
+background:#111827;
+width:500px;
+margin:auto;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 20px cyan;
+}
+
+button{
+padding:15px 25px;
+margin:10px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+background:#2563eb;
+color:white;
+}
+
+button:hover{
+background:#38bdf8;
+transform:scale(1.05);
+}
+
+#quiz{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💻 Dark Web Fighting Cybercrime Quiz</h1>
+
+<div id="start" class="card">
+
+<p>
+Test your cybersecurity knowledge!
+</p>
+
+<button onclick="startQuiz()">
+Start Quiz
+</button>
+
+</div>
+
+
+
+<div id="quiz" class="card">
+
+<h2 id="question"></h2>
+
+<button onclick="checkAnswer('True')">
+✅ True
+</button>
+
+<button onclick="checkAnswer('False')">
+❌ False
+</button>
+
+<p id="counter"></p>
+
+</div>
+
+</div>
+
+
+<script>
+
+let questions=[
+
+{
+question:"The dark web is only used for illegal activities.",
+answer:"False"
+},
+
+{
+question:"Smart devices connected to the internet create security risks.",
+answer:"True"
+},
+
+{
+question:"Cybercriminals only attack large companies.",
+answer:"False"
+},
+
+{
+question:"Strong passwords improve online security.",
+answer:"True"
+},
+
+{
+question:"The dark web is the same as Google.",
+answer:"False"
+},
+
+{
+question:"Cybercrime is increasing worldwide.",
+answer:"True"
+},
+
+{
+question:"IoT means devices connected to the internet.",
+answer:"True"
+},
+
+{
+question:"Hackers never steal personal information.",
+answer:"False"
+},
+
+{
+question:"Ransomware locks files and asks for money.",
+answer:"True"
+},
+
+{
+question:"Software updates improve cybersecurity.",
+answer:"True"
+},
+
+{
+question:"Private people cannot become victims.",
+answer:"False"
+},
+
+{
+question:"Companies can lose money through cyberattacks.",
+answer:"True"
+},
+
+{
+question:"Using the same password everywhere is safest.",
+answer:"False"
+},
+
+{
+question:"Online privacy is becoming more important.",
+answer:"True"
+},
+
+{
+question:"Internet-connected devices can be hacked.",
+answer:"True"
+}
+
+];
+
+let current=0;
+let points=0;
+
+
+function startQuiz(){
+
+document.getElementById("start").style.display="none";
+
+document.getElementById("quiz").style.display="block";
+
+showQuestion();
+
+}
+
+
+function showQuestion(){
+
+document.getElementById("question").innerHTML=
+questions[current].question;
+
+document.getElementById("counter").innerHTML=
+"Question "+(current+1)+" / "+questions.length;
+
+}
+
+
+function checkAnswer(user){
+
+if(user==questions[current].answer){
+points++;
+}
+
+current++;
+
+if(current<questions.length){
+
+showQuestion();
+
+}
+
+else{
+
+document.getElementById("quiz").innerHTML=
+
+"<h2>🎉 Quiz Finished!</h2>" +
+
+"<h1>"+points+" / "+questions.length+"</h1>"+
+
+"<p>You completed the Dark Web Quiz!</p>";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
